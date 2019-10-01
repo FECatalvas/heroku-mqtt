@@ -2,27 +2,13 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Websocket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Websocket</title>
 </head>
-
-<body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-	 crossorigin="anonymous"></script>
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-	<!------ Include the above in your HEAD tag ---------->
-
-	<style>
-		.form-container div, .form-container  span{
+<style>
+.form-container div, .form-container  span{
     font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
 }
 .form-container ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -101,7 +87,7 @@
     display: inline-block;
     height: 40px;
     width: 40px;
-    float: left;	
+    float:left;	
 }
 .form-container .input-status::before{
 	content: " ";
@@ -349,102 +335,118 @@
 	transition: all .3s ease-in-out;
 }
 </style>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<div class="container">
-		<div class="row">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-			<div class="col-md-4">
-				<form>
-					<div id="contact-form" class="form-container" data-form-container>
-						<div class="row">
-							<div class="form-title">
-								<span class="text-center">B R O K E R</span>
-							</div>
-						</div>
-						<div class="input-container">
-							<div class="row">
-								<span class="req-input">
-									<span class="input-status" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name.">
-									</span>
-									<input type="text" data-min-length="8" value="wss://test.mosquitto.org:8081/mqtt">
-								</span><br>
-								<p id="statusCheck" class="text-center">Status...</p>
-							</div>
-							<div class="row submit-row">
-								<button type="button" class="btn btn-block submit-form" id="btnConnect">Connect</button>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="col-md-4">
-				<form>
-					<div id="contact-form" class="form-container" data-form-container style="color: rgb(46, 125, 50); background: rgb(200, 230, 201);">
-						<div class="row">
-							<div class="form-title">
-								<span class="text-center"> P U B L I S H </span>
-							</div>
-						</div>
-						<div class="input-container">
-							<div class="row">
-								<span class="req-input valid">
-									<span class="input-status" data-toggle="tooltip" data-placement="top" title="Input your post title.">
-									</span>
-									<input type="text" data-min-length="8" placeholder="Enter topic" id="pubTopic" name="pubTopic">
-								</span>
-							</div>
 
-							<div class="row">
-								<span class="req-input message-box valid">
-									<span class="input-status" data-toggle="tooltip" data-placement="top" title="Input your post title.">
-									</span>
-									<input type="text" data-min-length="8" placeholder="Enter payload" id="pubPayload" name="pubPayload">
-							</div>
-							<div class="row submit-row">
-								<button type="button" class="btn btn-block submit-form valid" id="btnPublish">Publish</button>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
+    <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <div class="container">
+        <div class="row">
 
-			<div class="col-md-4">
-				<form>
-					<div id="login-form" class="form-container" data-form-container style="color: rgb(198, 40, 40); background: rgb(255, 205, 210);">
-						<div class="row">
-							<div class="form-title">
-								<span class="text-center">S U B S C R I B E</span>
-							</div>
-						</div>
-						<div class="input-container">
-							<div class="row">
-								<span class="req-input valid">
-									<input type="text" data-min-length="8" placeholder="Enter topic to subscribe" id="subTopic" name="subTopic">
-								</span>
-							</div>
-							<div class="row submit-row">
-								<button type="button" class="btn btn-block submit-form invalid" id="btnSubscribe">Subscribe</button>
-							</div>
-						</div>
-					</div>
+            <div class="col-md-4">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container>
+                        <div class="row">
+                            <div class="form-title">
+                                <span class="text-center">B R O K E R</span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input">
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Input Your First and Last Name.">
+                                    </span>
+                                    <input type="text" data-min-length="8" value="wss://test.mosquitto.org:8081/mqtt">
+                                </span><br>
+                                <p id="statusCheck" class="text-center">Status...</p>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" class="btn btn-block submit-form" id="btnConnect">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <div id="contact-form" class="form-container" data-form-container style="color: rgb(46, 125, 50); background: rgb(200, 230, 201);">
+                        <div class="row">
+                            <div class="form-title">
+                                <span class="text-center"> P U B L I S H </span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input valid">
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Input your post title.">
+                                    </span>
+                                    <input type="text" data-min-length="8" placeholder="Enter topic" id="pubTopic" name="pubTopic">
+                                </span>
+                            </div>
 
-				</form>
-			</div>
+                            <div class="row">
+                                <span class="req-input message-box valid">
+                                    <span class="input-status" data-toggle="tooltip" data-placement="top" title="Input your post title.">
+                                    </span>
+                                    <input type="text" data-min-length="8" placeholder="Enter payload" id="pubPayload"
+                                        name="pubPayload">
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" class="btn btn-block submit-form valid" id="btnPublish">Publish</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-		</div>
-	</div>
+            <div class="col-md-4">
+                <form>
+                    <div id="login-form" class="form-container" data-form-container style="color: rgb(198, 40, 40); background: rgb(255, 205, 210);">
+                        <div class="row">
+                            <div class="form-title">
+                                <span class="text-center">S U B S C R I B E</span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <div class="row">
+                                <span class="req-input valid">
+                                    <input type="text" data-min-length="8" placeholder="Enter topic to subscribe" id="subTopic"
+                                        name="subTopic">
+                                </span>
+                            </div>
+                            <div class="row submit-row">
+                                <button type="button" class="btn btn-block submit-form invalid" id="btnSubscribe">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
 
-	<table class="table table-hover text-center">
-		<thead class="thead-dark text-center">
-		  <tr>
-			<th scope="col">Topic</th>
-			<th scope="col">Payload</td>
-			<th scope="col">Timestamp</td>
-		  </tr>
-		</thead>	  
-		<tbody id="brokersMessage" ></tbody>
-	  </table>
-	<script src="scripts/browserMqtt.js"></script>
-	<script src="scripts/controller.js"></script>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <table class="table table-hover text-center">
+        <thead class="thead-dark text-center">
+            <tr>
+                <th scope="col">Topic</th>
+                <th scope="col">Payload</td>
+                <th scope="col">Timestamp</td>
+            </tr>
+        </thead>
+        <tbody id="brokersMessage"></tbody>
+    </table>
+    <script src="/browserMqtt.js"></script>
+    <script src="/controller.js"></script>
 </body>
+
 </html>
