@@ -1,0 +1,29 @@
+{
+  "name": "heroku-mqtt",
+  "version": "1.0.0",
+  "description": "Mqtt app deployed on heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FECatalvas/heroku-mqtt.git"
+  },
+  "keywords": [
+    "mqtt",
+    "heroku"
+  ],
+  "author": "Faye Erika Catalvas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FECatalvas/heroku-mqtt/issues"
+  },
+  "homepage": "https://github.com/FECatalvas/heroku-mqtt#readme",
+  "engines": {
+    "node": "10.15.3"
+  },
+  "dependencies": {
+    "package.json": "^2.0.1"
+  }
+}
